@@ -1,4 +1,4 @@
-#include "ISOsfr.h"
+#include "sfr.h"
 #include <opencv2/opencv.hpp>
 #include <complex>
 #include <cmath>
@@ -298,7 +298,7 @@ void ReduceRows(double slope, int *ImgHeight)
 	if (tempSlope*cycs < *ImgHeight) { *ImgHeight = tempSlope * cycs; }
 }
 
-int SFRCalculation(cv::Mat &ROI, double gamma)
+float SFRCalculation(cv::Mat &ROI, double gamma)
 {
 	if (ROI.empty())
 	{

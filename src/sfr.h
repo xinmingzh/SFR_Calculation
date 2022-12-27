@@ -3,4 +3,4 @@
 #include <vector>
 #define M_PI 3.1415
 
-void SFRCalculation(cv::Mat &ROI, double gamma);
+float SFRCalculation(cv::Mat &ROI, double gamma);

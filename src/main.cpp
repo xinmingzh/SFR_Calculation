@@ -8,19 +8,19 @@ void ROImouseEvent(int event, int x, int y, int flag, void *params)
 {
 	cv::Point *ptr = (cv::Point*)params;
 
-	if (event == CV_EVENT_LBUTTONDOWN && ptr[0].x == -1 && ptr[0].y == -1)
+	if (event == cv::EVENT_LBUTTONDOWN && ptr[0].x == -1 && ptr[0].y == -1)
 	{
 		ptr[0].x = x;
 		ptr[0].y = y;
 	}
 
-	if (flag == CV_EVENT_FLAG_LBUTTON)
+	if (flag == cv::EVENT_FLAG_LBUTTON)
 	{
 		ptr[1].x = x;
 		ptr[1].y = y;
 	}
 
-	if (event == CV_EVENT_LBUTTONUP && ptr[2].x == -1 && ptr[2].y == -1)
+	if (event == cv::EVENT_LBUTTONUP && ptr[2].x == -1 && ptr[2].y == -1)
 	{
 		ptr[2].x = x;
 		ptr[2].y = y;
@@ -30,12 +30,12 @@ void ROImouseEvent(int event, int x, int y, int flag, void *params)
 
 void ROISelection(cv::Mat &img,cv::Mat &roi)
 {
-	cv::Point *Corners = new cv::Point[3];s
+	cv::Point *Corners = new cv::Point[3];
 	Corners[0].x = Corners[0].y = -1;
 	Corners[1].x = Corners[1].y = -1;
 	Corners[2].x = Corners[2].y = -1;
 
-	cv::namedWindow("ROI select(Press Esc to close window)",CV_WINDOW_NORMAL);
+	cv::namedWindow("ROI select(Press Esc to close window)", cv::WINDOW_NORMAL);
 	cv::imshow("ROI select(Press Esc to close window)", img);
 
 	bool downFlag = false, upFlag = false;
@@ -87,7 +87,7 @@ void ROISelection(cv::Mat &img,cv::Mat &roi)
 int main(int argc, char *argv[]) {
 
 
-	cv::Mat img = cv::imread("./imgs/original_img.bmp", cv::IMREAD_GRAYSCALE);
+	cv::Mat img = cv::imread("../imgs/original_img.bmp", cv::IMREAD_GRAYSCALE);
 	cv::Mat roi;
 
 	ROISelection(img, roi);
